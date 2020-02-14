@@ -1,0 +1,35 @@
+p, div {
+    font-family: Roboto, sans-serif;
+}
+
+h2 {
+    color: #001409;
+}
+  
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.singin-form {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    padding: 10px 20px;
+    background-color: #fefefe;
+    border: 2px solid lightgreen;
+    background-color: #f5fff9;
+    border-radius: 6px;
+}
+
+.username, .password {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 20px;
+}
+
+input {
+    margin-left: 10px;
+}
