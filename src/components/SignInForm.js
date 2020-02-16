@@ -1,5 +1,40 @@
 import React from "react"
 import InfoBanner from "./InfoBanner";
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+import {Paper, Box} from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+    paper: {
+        marginTop: '64px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '10px'
+    },
+    form: {
+      width: '100%',
+      marginTop: '15px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    },
+    formInput: {
+      width: '100%',
+      marginTop: '25px',
+      color: 'black'
+    },
+    submit: {
+      margin: '25px 0 10px 0',
+    },
+    label: {
+        color: 'black',
+    }
+};
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -52,36 +87,58 @@ class SignInForm extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         const errorMessage = this.props.errorMessage;
-        const banner = errorMessage ? 
-              <InfoBanner text={errorMessage} failure />
-            : <InfoBanner text="You are currently not logged in!"/>;
 
         return(
             <div className="form-wrapper">
-                {banner}
-                <h2>{this.props.loggedInStatus}</h2>
-                <div className="singin-form">
-                    <h2>Sign in</h2>
-                    <form onSubmit={this.authenticate}>
-                        <div className="username">
-                            <label>Username:
-                                <input name="username" type="text" value={this.state.username} onChange={this.handleUsernameChange} />
-                            </label>
-                        </div>
-                        <div className="password">
-                            <label>Password:
-                                <input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-                            </label>
-                        </div>
-                        <div className="submit">
-                        <input type="submit" value="Submit" />
-                        </div>
-                    </form>
-                </div>
+                <InfoBanner text="You are currently not logged in!"/>
+                <Container component="main" maxWidth="xs">
+                    <Paper className={classes.paper}>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        { errorMessage ? 
+                            (
+                                <Typography component="h5" variant="overline" color="error">
+                                    {errorMessage}
+                                </Typography>
+                            ) : null
+                        }
+                        <form onSubmit={this.authenticate} className={classes.form}>
+                            <div className={classes.formInput}>
+                                <InputLabel className={classes.label}>Username:
+                                    <Input
+                                        fullWidth
+                                        name="username"
+                                        type="text"
+                                        value={this.state.username}
+                                        onChange={this.handleUsernameChange} />
+                                </InputLabel>
+                            </div>
+                            <div className={classes.formInput}>
+                                <InputLabel className={classes.label}>Password:
+                                    <Input
+                                        fullWidth
+                                        type="password"
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange={this.handlePasswordChange}/>
+                                </InputLabel>
+                            </div>
+                            <Button
+                                className={classes.submit}
+                                type="submit"
+                                variant="contained"
+                                color="primary" >
+                                Submit
+                            </Button>
+                        </form>
+                    </Paper>
+                </Container>
             </div>
         );
     }
 }
 
-export default SignInForm
+export default withStyles(styles)(SignInForm)
