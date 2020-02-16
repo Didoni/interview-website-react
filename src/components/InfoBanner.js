@@ -2,7 +2,7 @@ import React from "react";
 
 function InfoBanner(props) {
     const bannerStyle = {
-        backgroundColor: props.success ? "green" : "grey" 
+        backgroundColor: props.success ? "green" : props.failure ? "red" : "grey" 
     };
 
     return(

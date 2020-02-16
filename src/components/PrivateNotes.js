@@ -1,21 +1,29 @@
 import React from "react"
 import InfoBanner from "./InfoBanner";
-import { useHistory } from "react-router-dom";
 
-function PrivateNotes() {
+class PrivateNotes extends React.Component  {
 
-    let history = useHistory();
+    constructor(props) {
+        super(props);
 
-    function handleSignout(e) {
-        history.push('/signin');
+        this.handleSignout = this.handleSignout.bind(this);
     }
 
-    return(
-        <div className="form-wrapper">
-            <InfoBanner text="You are logged into your Private Notest page." success /> 
-            <button onClick={handleSignout}>Sign out</button>
-        </div>
-    );
+    handleSignout(e) {
+        this.props.onSignout();
+        this.props.history.push('/signin');
+    }
+
+    render() {
+        const welcomeText = "Welcome " + this.props.user  + ". You are logged into your Private Notest page.";
+        return(
+            <div className="form-wrapper">
+                <InfoBanner text={welcomeText} success /> 
+                <h2>{this.props.loggedInStatus}</h2>
+                <button onClick={this.handleSignout}>Sign out</button>
+            </div>
+        );
+    }
 }
 
 export default PrivateNotes
