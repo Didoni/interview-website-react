@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InfoBanner from '../../components/InfoBanner';
-import Typography from '@material-ui/core/Typography';
 import { createShallow } from '@material-ui/core/test-utils';
+import Typography from '@material-ui/core/Typography';
+import InfoBanner from '../../components/InfoBanner';
 
 describe('App component', () => {
   let shallow;

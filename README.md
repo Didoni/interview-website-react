@@ -1,6 +1,6 @@
 # React App with basic Login
 
-This repository contains an application built using React and showcasing login functionality. When first entering the app the user is asked to **Sign In**. To authenticate the app contacts and API which returns **200 OK** if the authentication succeeds and **401 unauthorized** if the authentication fails. Upon success, the user is presented with the **Private Notes** page. A personalised **Welcome** message appears on this page, together with a **Logout** button.
+This repository contains an application built using React and showcasing login functionality. The user is asked to **Sign In** when they first enter the website. To authenticate, the app contacts and API which returns **200 OK** if the authentication succeeds and **401 unauthorized** if the authentication fails. Upon success, the user is presented with the **Private Notes** page. A personalised **Welcome** message appears on this page, together with a **Logout** button.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Next, start the development server:
 yarn serve
 ```
 
-The app can then be accessed by visiting http://localhost:9000/. The authentication API should be running to enable the app to authenticate users.
+The app can then be accessed by visiting http://localhost:9000/. The authentication API should be running to enable the app to authenticate its users.
 
 ## Built With
 
@@ -39,4 +39,4 @@ The following packages were used to facilitate the creation of maintainable and 
 
 - [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) - Code formatting, style and syntax checking
 - [Husky](https://www.npmjs.com/package/husky) - Git hooks used to trigger testing and code checks
-- [Jest](https://jestjs.io/) - Unit testing
+- [Jest](https://jestjs.io/), [Enzyme](https://airbnb.io/enzyme/) - Unit testing
