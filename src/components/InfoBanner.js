@@ -32,8 +32,12 @@ function InfoBanner(props) {
 }
 
 InfoBanner.propTypes = {
-  success: PropTypes.bool.isRequired,
+  success: PropTypes.bool,
   text: PropTypes.string.isRequired,
+};
+
+InfoBanner.defaultProps = {
+  success: false,
 };
 
 export default withStyles(styles)(InfoBanner);

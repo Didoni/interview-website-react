@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import PrivateNotes from './PrivateNotes';
 import SignInForm from './SignInForm';
@@ -59,19 +59,11 @@ class App extends React.Component {
     const { loggedInStatus, errorMessage, user } = this.state;
     return (
       <div>
-        <Typography align="center" variant="h3">
+        <Typography align="center" variant="h3" paragraph>
           Simple Web Page
         </Typography>
         <Router>
           <div>
-            <ul>
-              <li>
-                <Link to="/signin">Sign in Page</Link>
-              </li>
-              <li>
-                <Link to="/notes">Protected Page</Link>
-              </li>
-            </ul>
             <Switch>
               <Route
                 exact
