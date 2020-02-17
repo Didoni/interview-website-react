@@ -15,12 +15,7 @@ const styles = {
 };
 
 function InfoBanner(props) {
-  const {
-    classes,
-    success,
-    children,
-    text,
-  } = props;
+  const { classes, success, children, text } = props;
 
   return (
     <div className={classes.banner}>

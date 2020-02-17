@@ -66,14 +66,17 @@ class SignInForm extends React.Component {
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed!');
+        },
+        () => {
+          throw new Error('Request failed due to network error!');
         }
-        throw new Error('Request failed!');
-      }, () => {
-        throw new Error('Request failed due to network error!');
-      })
+      )
       .then(() => {
         onSuccessfulAuth(credentials.username);
         history.push('/notes');
@@ -98,25 +101,16 @@ class SignInForm extends React.Component {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            {errorMessage
-              ? (
-                <Typography component="h5" variant="overline" color="error">
-                  {
-                  errorMessage
-                  }
-                </Typography>
-              ) : null }
+            {errorMessage ? (
+              <Typography component="h5" variant="overline" color="error">
+                {errorMessage}
+              </Typography>
+            ) : null}
             <form onSubmit={this.authenticate} className={classes.form}>
               <div className={classes.formInput}>
                 <InputLabel className={classes.label}>
                   Username:
-                  <Input
-                    fullWidth
-                    name="username"
-                    type="text"
-                    value={username}
-                    onChange={this.handleUsernameChange}
-                  />
+                  <Input fullWidth name="username" type="text" value={username} onChange={this.handleUsernameChange} />
                 </InputLabel>
               </div>
               <div className={classes.formInput}>
@@ -131,12 +125,7 @@ class SignInForm extends React.Component {
                   />
                 </InputLabel>
               </div>
-              <Button
-                className={classes.submit}
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
+              <Button className={classes.submit} type="submit" variant="contained" color="primary">
                 Submit
               </Button>
             </form>

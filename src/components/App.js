@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Link,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import PrivateNotes from './PrivateNotes';
 import SignInForm from './SignInForm';
@@ -65,7 +59,9 @@ class App extends React.Component {
     const { loggedInStatus, errorMessage, user } = this.state;
     return (
       <div>
-        <Typography align="center" variant="h3">Simple Web Page</Typography>
+        <Typography align="center" variant="h3">
+          Simple Web Page
+        </Typography>
         <Router>
           <div>
             <ul>
@@ -80,36 +76,29 @@ class App extends React.Component {
               <Route
                 exact
                 path="/signin"
-                render={
-                  (props) => (loggedInStatus === 'NOT_LOGGED_IN'
-                    ? (
-                      <SignInForm
-                        {... props}
-                        loggedInStatus={loggedInStatus}
-                        onSuccessfulAuth={this.onSuccessfulAuth}
-                        onFailedAuth={this.onFailedAuth}
-                        errorMessage={errorMessage}
-                      />
-                    ) : (
-                      <Redirect to="/notes" />
-                    ))
+                render={props =>
+                  loggedInStatus === 'NOT_LOGGED_IN' ? (
+                    <SignInForm
+                      {...props}
+                      loggedInStatus={loggedInStatus}
+                      onSuccessfulAuth={this.onSuccessfulAuth}
+                      onFailedAuth={this.onFailedAuth}
+                      errorMessage={errorMessage}
+                    />
+                  ) : (
+                    <Redirect to="/notes" />
+                  )
                 }
               />
               <Route
                 exact
                 path="/notes"
-                render={
-                  (props) => (loggedInStatus === 'LOGGED_IN'
-                    ? (
-                      <PrivateNotes
-                        {... props}
-                        loggedInStatus={loggedInStatus}
-                        user={user}
-                        onSignout={this.onSignout}
-                      />
-                    ) : (
-                      <Redirect to="/signin" />
-                    ))
+                render={props =>
+                  loggedInStatus === 'LOGGED_IN' ? (
+                    <PrivateNotes {...props} loggedInStatus={loggedInStatus} user={user} onSignout={this.onSignout} />
+                  ) : (
+                    <Redirect to="/signin" />
+                  )
                 }
               />
               <Redirect to="/notes" />

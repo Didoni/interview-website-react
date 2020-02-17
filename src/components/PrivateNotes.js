@@ -14,7 +14,9 @@ function PrivateNotes(props) {
   return (
     <div className="form-wrapper">
       <InfoBanner text={welcomeText} success>
-        <Button color="inherit" onClick={handleSignout}>Sign out</Button>
+        <Button color="inherit" onClick={handleSignout}>
+          Sign out
+        </Button>
       </InfoBanner>
     </div>
   );
